@@ -127,7 +127,7 @@ async function guardarPerfil(perfilId, datos) {
 }
 
 function liberarPerfil(perfilId) {
-  guardarPerfil(perfilId, { comprador: "", contacto: "", fecha_venta: null, duracion_dias: 30, precio: "" });
+  guardarPerfil(perfilId, { comprador: "", contacto: "", pin: "", fecha_venta: null, duracion_dias: 30, precio: "" });
 }
 
 // ---------- Render ----------
@@ -229,6 +229,7 @@ function renderTarjetaPerfil(p) {
         <div class="form-perfil">
           <input class="f-comprador" placeholder="Nombre del comprador" value="${escapeAttr(p.comprador)}" />
           <input class="f-contacto" placeholder="Contacto (WhatsApp, correo...)" value="${escapeAttr(p.contacto)}" />
+          <input class="f-pin" placeholder="PIN del perfil (ej. 4821)" inputmode="numeric" maxlength="8" value="${escapeAttr(p.pin)}" />
           <div class="fila-fecha-dias">
             <div>
               <label>Fecha de venta</label>
@@ -259,6 +260,7 @@ function renderTarjetaPerfil(p) {
         <div class="info-perfil">
           <div><b>${escapeHtml(p.comprador)}</b></div>
           ${p.contacto ? `<div>${escapeHtml(p.contacto)}</div>` : ""}
+          ${p.pin ? `<div>PIN: ${escapeHtml(p.pin)}</div>` : ""}
           ${p.fecha_venta ? `<div>Vendido: ${formatoFecha(new Date(p.fecha_venta))}</div>` : ""}
           ${est.venc ? `<div>Vence: ${formatoFecha(est.venc)}</div>` : ""}
           ${p.precio ? `<div>Precio: ${escapeHtml(p.precio)}</div>` : ""}
@@ -289,6 +291,7 @@ function cablearTarjetasPerfil(cuenta) {
       btnGuardar.addEventListener("click", () => {
         const comprador = tarjeta.querySelector(".f-comprador").value.trim();
         const contacto = tarjeta.querySelector(".f-contacto").value.trim();
+        const pin = tarjeta.querySelector(".f-pin").value.trim();
         const fecha = tarjeta.querySelector(".f-fecha").value;
         const dias = Number(tarjeta.querySelector(".f-dias").value);
         const precio = tarjeta.querySelector(".f-precio").value;
@@ -297,7 +300,7 @@ function cablearTarjetasPerfil(cuenta) {
         if (!comprador) { errorEl.textContent = "Ingresa el nombre del comprador."; return; }
         if (!fecha) { errorEl.textContent = "Ingresa la fecha de venta."; return; }
 
-        guardarPerfil(p.id, { comprador, contacto, fecha_venta: fecha, duracion_dias: dias, precio });
+        guardarPerfil(p.id, { comprador, contacto, pin, fecha_venta: fecha, duracion_dias: dias, precio });
       });
     }
   });
