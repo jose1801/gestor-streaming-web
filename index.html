@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gestor de cuentas de streaming</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pantalla de login -->
+  <div id="pantalla-login" class="pantalla-login">
+    <form id="form-login" class="tarjeta-login">
+      <h1>Gestor de cuentas</h1>
+      <input type="email" id="login-email" placeholder="Correo" autocomplete="username" required />
+      <input type="password" id="login-password" placeholder="Contraseña" autocomplete="current-password" required />
+      <div id="login-error" class="mensaje-error"></div>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <!-- App principal -->
+  <div id="app" class="app oculto">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <span class="etiqueta">Perfiles</span>
+        <button id="btn-salir" class="btn-fantasma btn-chico">Salir</button>
+      </div>
+      <div id="resumen" class="resumen"></div>
+
+      <div class="sidebar-cuentas-header">
+        <span class="titulo-seccion">Cuentas</span>
+        <button id="btn-nueva-cuenta" class="btn-agregar" title="Agregar cuenta">+</button>
+      </div>
+      <div id="lista-cuentas" class="lista-cuentas"></div>
+      <div id="estado-guardado" class="estado-guardado"></div>
+    </aside>
+
+    <main class="contenido">
+      <div id="contenido-cuenta"></div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
