@@ -23,10 +23,14 @@
   <div id="app" class="app oculto">
     <aside class="sidebar">
       <div class="sidebar-top">
-        <span class="etiqueta">Perfiles</span>
-        <button id="btn-salir" class="btn-fantasma btn-chico">Salir</button>
+        <span class="marca">Gestor de cuentas</span>
+        <button id="btn-salir" class="btn btn-fantasma btn-chico">Salir</button>
       </div>
-      <div id="resumen" class="resumen"></div>
+
+      <nav class="nav">
+        <button id="nav-dashboard" class="nav-item">Dashboard</button>
+        <button id="nav-plataformas" class="nav-item">Plataformas</button>
+      </nav>
 
       <div class="sidebar-cuentas-header">
         <span class="titulo-seccion">Cuentas</span>
@@ -36,9 +40,7 @@
       <div id="estado-guardado" class="estado-guardado"></div>
     </aside>
 
-    <main class="contenido">
-      <div id="contenido-cuenta"></div>
-    </main>
+    <main class="contenido" id="contenido"></main>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
